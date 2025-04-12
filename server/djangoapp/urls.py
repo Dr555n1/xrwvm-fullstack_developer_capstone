@@ -34,7 +34,7 @@ urlpatterns = [
     # path for add a review view
     path(route='get_cars',
          view=views.get_cars,
-         name ='getcars'),
+         name='getcars'),
     path(route='add_review',
          view=views.add_review,
          name='add_review'),
