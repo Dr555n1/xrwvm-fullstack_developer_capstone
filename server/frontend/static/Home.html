@@ -7,7 +7,21 @@
 <script>
 
 const logout = async (e) => {
-//Include the code for logout here.
+  let logout_url = window.location.origin+"/djangoapp/logout";
+  {% if user.is_authenticated %}
+
+    username1 = '{{user.username}}'
+  
+    alert("Logging out "+username1+"...")
+    let username = sessionStorage.getItem('username');
+    //alert("Logging out2 "+username+"...")
+    sessionStorage.removeItem('username');
+    //alert("Logging out3 "+username+"...")
+    window.location.href = window.location.origin;
+    //alert("Logging out4 "+window.location.href+"...")
+    //window.location.reload();
+    window.location.reload();
+    {% endif %}
 };
 
 let checkSession = ()=>{
