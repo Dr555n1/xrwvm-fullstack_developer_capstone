@@ -1,12 +1,12 @@
 # Uncomment the required imports before adding the code
 
 from django.shortcuts import render
-from django.http import HttpResponseRedirect, HttpResponse
+# from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
-from django.shortcuts import get_object_or_404, render, redirect
-from django.contrib.auth import logout
-from django.contrib import messages
-from datetime import datetime
+# from django.shortcuts import get_object_or_404, render, redirect
+# from django.contrib.auth import logout
+# from django.contrib import messages
+# from datetime import datetime
 
 from django.http import JsonResponse
 from django.contrib.auth import login, authenticate
@@ -40,16 +40,17 @@ def login_user(request):
 
 
 def logout_request(request):
-    #print(request.user.username, type(request.user.username))
-    username = request.user.username 
-    #logout(request)
-    data = {"userName":username}
+    # print(request.user.username,
+    # type(request.user.username))
+    username = request.user.username
+    logout(request)
+    data = {"userName": username}
     return JsonResponse(data)
 
 
 @csrf_exempt
 def registration(request):
-    context = {}
+    # context = {}
     data = json.loads(request.body)
     username = data['userName']
     password = data['password']
@@ -57,7 +58,7 @@ def registration(request):
     last_name = data['lastName']
     email = data['email']
     username_exist = False
-    email_exist = False
+    # email_exist = False
     try:
         # Check if user already exists
         User.objects.get(username=username)
@@ -75,10 +76,12 @@ def registration(request):
                                         email=email)
         # Login the user and redirect to list page
         login(request, user)
-        data = {"userName":username,"status":"Authenticated"}
+        data = {"userName": username,
+                "status": "Authenticated"}
         return JsonResponse(data)
     else :
-        data = {"userName":username,"error":"Already Registered"}
+        data = {"userName": username,
+                "error": "Already Registered"}
         return JsonResponse(data)
 
 
@@ -120,6 +123,7 @@ def get_dealer_reviews(request, dealer_id):
         return JsonResponse({"status": 400,
                              "message": "Bad Request"})
 
+
 def get_dealer_details(request, dealer_id):
     if(dealer_id):
         endpoint = "/fetchDealer/"+str(dealer_id)
@@ -130,11 +134,12 @@ def get_dealer_details(request, dealer_id):
         return JsonResponse({"status": 400,
                              "message": "Bad Request"})
 
+
 def add_review(request):
     if(request.user.is_anonymous == False):
         data = json.loads(request.body)
         try:
-            response = post_review(data)
+            # response = post_review(data)
             return JsonResponse({"status": 200})
         except:
             return JsonResponse({"status": 401,
