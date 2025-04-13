@@ -147,7 +147,13 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'frontend/static'),
 ALLOWED_HOSTS = ['localhost',
                  'https://grinfeldsv75-8000.'
                  'theiadockernext-0-labs-prod-theiak8s-4-tor01.'
+                 'proxy.cognitiveclass.ai',
+                 'https://grinfeldsv75-8000.'
+                 'theiadockernext-1-labs-prod-theiak8s-4-tor01.'
                  'proxy.cognitiveclass.ai']
 CSRF_TRUSTED_ORIGINS = ['https://grinfeldsv75-8000.'
                         'theiadockernext-0-labs-prod-theiak8s-4-tor01.'
+                        'proxy.cognitiveclass.ai',
+                        'https://grinfeldsv75-8000.'
+                        'theiadockernext-1-labs-prod-theiak8s-4-tor01.'
                         'proxy.cognitiveclass.ai']
